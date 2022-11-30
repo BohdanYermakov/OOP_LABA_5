@@ -13,16 +13,16 @@
         {
             menuOptions = menuOptions
                 .Concat(
-                    new string[3]
+                    new string[2]
                     {
                         "Convert Byte to KiloByte",
-                        "Exponent",
                         "Convert Celsius to Fahrenheit"
                     }
                 )
                 .ToArray();
         }
-        AdvancedCalc calculator = new AdvancedCalc();
+        IAdvanced advancedCalc = new AdvancedCalc();
+        AbstCalc baseCalc = new Calculator();
 
         int option = 0;
         do
@@ -46,41 +46,36 @@
                         double amount = double.Parse(Console.ReadLine() ?? "");
                         Console.WriteLine(
                             "Converted amount: {0:F2} KB",
-                            calculator.ByteToKB(amount)
+                            advancedCalc.ByteToKB(amount)
                         );
                         break;
                     case 6:
-                        Console.Write("Enter num: ");
-                        double num = double.Parse(Console.ReadLine() ?? "");
-                        Console.WriteLine("Exp({0}) = {1}", num, calculator.Exp(num));
-                        break;
-                    case 7:
                         Console.Write("Enter degree in Celsius : ");
                         double amount2 = double.Parse(Console.ReadLine() ?? "");
                         Console.WriteLine(
                             "Converted amount: {0:F2} in Fahrenheit degree",
-                            calculator.CelsiusToFahrenheit(amount2)
+                            advancedCalc.CelsiusToFahrenheit(amount2)
                         );
                         break;
                     default:
                         // Base calculator functions
                         Console.WriteLine("Enter two numbers through ENTER");
-                        calculator.Num1 = double.Parse(Console.ReadLine() ?? "");
-                        calculator.Num2 = double.Parse(Console.ReadLine() ?? "");
+                        baseCalc.Num1 = double.Parse(Console.ReadLine() ?? "");
+                        baseCalc.Num2 = double.Parse(Console.ReadLine() ?? "");
                         double operationRes = 0;
                         switch (option)
                         {
                             case 1:
-                                operationRes = calculator.Add();
+                                operationRes = baseCalc.Add();
                                 break;
                             case 2:
-                                operationRes = calculator.Sub();
+                                operationRes = baseCalc.Sub();
                                 break;
                             case 3:
-                                operationRes = calculator.Mul();
+                                operationRes = baseCalc.Mul();
                                 break;
                             case 4:
-                                operationRes = calculator.Div();
+                                operationRes = baseCalc.Div();
                                 break;
                         }
                         Console.WriteLine("Operation result: {0}", operationRes);

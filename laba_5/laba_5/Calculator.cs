@@ -1,9 +1,6 @@
 ﻿
 public class Calculator : AbstCalc
-{
-    public double Num1 { get; set; }
-    public double Num2 { get; set; }
-
+{   
     public override double Add()
     {
         return this.Num1 + this.Num2;

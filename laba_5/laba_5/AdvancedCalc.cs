@@ -1,5 +1,5 @@
 ﻿
-public class AdvancedCalc : Calculator
+public class AdvancedCalc : Calculator, IAdvanced
 {
     public double ByteToKB(double NumByte)
     {
@@ -9,10 +9,5 @@ public class AdvancedCalc : Calculator
     public double CelsiusToFahrenheit(double Celsius)
     {
         return Celsius * 1.9 + 32;
-    }
-
-    public double Exp(double num)
-    {
-        return Math.Exp(num);
     }
 }
